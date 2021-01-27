@@ -11,6 +11,7 @@ import {
   Parent,
 } from '@nestjs/graphql';
 import { Inject } from '@nestjs/common';
+import { DeleteResult, UpdateResult } from 'typeorm';
 
 @Resolver((of) => CityModel)
 export class CityResolver {
@@ -42,5 +43,20 @@ export class CityResolver {
     @Args('phone', { nullable: true }) phone: string,
   ): Promise<CityModel> {
     return this.cityService.create({ name, phone });
+  }
+
+  @Mutation((returns) => CityModel)
+  async editCity(
+    @Args('id') id: string,
+    @Args('name') name: string,
+    @Args('phone') phone: string,
+  ): Promise<UpdateResult> {
+    const city = { name, phone };
+    return await this.cityService.findOneAndUpdate(id, city);
+  }
+
+  @Mutation((returns) => CityModel)
+  async deleteCity(@Args('id') id: string): Promise<DeleteResult> {
+    return await this.cityService.findOneAndRemove(id);
   }
 }
