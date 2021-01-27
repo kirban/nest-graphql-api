@@ -20,7 +20,7 @@ export class CityResolver {
   ) {}
 
   @Query((returns) => CityModel)
-  async customer(@Args('id') id: string): Promise<CityModel> {
+  async city(@Args('id') id: string): Promise<CityModel> {
     return await this.cityService.findOne(id);
   }
 
