@@ -1,0 +1,33 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type StationModel {
+  id: String!
+  name: String!
+  city: CityModel!
+}
+
+type CityModel {
+  id: String!
+  name: String!
+  phone: String!
+  stations: [StationModel!]
+}
+
+type Query {
+  station(id: String!): StationModel!
+  stations: [StationModel!]!
+  city(id: String!): CityModel!
+  cities: [CityModel!]!
+}
+
+type Mutation {
+  createStation(station: CreateStationDTO!): StationModel!
+  createCity(phone: String, name: String!): CityModel!
+}
+
+input CreateStationDTO {
+  name: String!
+  city: String!
+}
