@@ -1,12 +1,30 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { CityResolver } from './city/city.resolver';
-import { StationResolver } from './station/station.resolver';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { GraphQLModule } from '@nestjs/graphql';
+import { StationModule } from './station/station.module';
+import { CityModule } from './city/city.module';
 
 @Module({
-  imports: [],
+  imports: [
+    StationModule,
+    CityModule,
+    GraphQLModule.forRoot({
+      autoSchemaFile: 'schema.gql',
+    }),
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: 'localhost',
+      port: 5432,
+      username: 'kirbanan',
+      password: 'zxcvb928374ytrewq',
+      database: 'fitautoapp',
+      entities: ['dist/**/*.model.js'],
+      synchronize: false,
+    }),
+  ],
   controllers: [AppController],
-  providers: [AppService, CityResolver, StationResolver],
+  providers: [AppService],
 })
 export class AppModule {}
