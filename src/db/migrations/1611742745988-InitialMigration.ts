@@ -12,7 +12,7 @@ export class InitialMigration1611742745988 implements MigrationInterface {
       undefined,
     );
     await queryRunner.query(
-      `ALTER TABLE "station_model" ADD CONSTRAINT "FK_94159a6fa95bef7a1dc75efb29d" FOREIGN KEY ("cityId") REFERENCES "city_model"("id") ON DELETE NO ACTION ON UPDATE NO ACTION`,
+      `ALTER TABLE "station_model" ADD CONSTRAINT "FK_94159a6fa95bef7a1dc75efb29d" FOREIGN KEY ("cityId") REFERENCES "city_model"("id") ON DELETE CASCADE ON UPDATE NO ACTION`,
       undefined,
     );
   }

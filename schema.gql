@@ -25,6 +25,8 @@ type Query {
 type Mutation {
   createStation(station: CreateStationDTO!): StationModel!
   createCity(phone: String, name: String!): CityModel!
+  editCity(phone: String!, name: String!, id: String!): CityModel!
+  deleteCity(id: String!): CityModel!
 }
 
 input CreateStationDTO {
