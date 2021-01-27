@@ -2,7 +2,7 @@
   "name": "nest-graphql-api",
   "version": "0.0.1",
   "description": "",
-  "author": "",
+  "author": "kirbanan",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
@@ -32,6 +32,7 @@
     "@nestjs/platform-express": "^7.5.1",
     "@nestjs/typeorm": "^7.1.5",
     "apollo-server-express": "^2.19.2",
+    "faker": "^5.2.0",
     "graphql": "^15.4.0",
     "graphql-tools": "^7.0.2",
     "pg": "^8.5.1",
